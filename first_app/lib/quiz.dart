@@ -1,10 +1,12 @@
+import 'dart:ffi';
+
 import 'package:first_app/question.dart';
 import 'package:flutter/material.dart';
 
 import 'answer.dart';
 
 class Quiz extends StatelessWidget {
-  final VoidCallback answerQuestion;
+  final Function answerQuestion;
   final List<Map<String, Object>> questions;
   final int questionIndex;
 
@@ -18,9 +20,9 @@ class Quiz extends StatelessWidget {
     return Column(
       children: [
         Question(questions[questionIndex]['questionText'].toString()),
-        ...(questions[questionIndex]['answers'] as List<String>).map(
+        ...(questions[questionIndex]['answers'] as List<Map<String,Object>>).map(
           (answer) {
-            return Answer(answerQuestion, answer);
+            return Answer(() => answerQuestion(answer['score']), (answer['text'].toString()));
           },
         ).toList(),
       ],
