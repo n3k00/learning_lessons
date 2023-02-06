@@ -6,5 +6,5 @@ I am learning flutter widgets .
 
 
 
-![screenshot image](screenshot.jpg "Title"){width=250}
+![screenshot image](screenshot.jpg){width=250}
 
